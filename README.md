@@ -13,3 +13,21 @@ enctype="multipart/form-data"
 - Allowed types: .png / .jpg / .jpeg / .pdf
 - Provide download link in list page
 
+## steps
+1. have the HTML form - `enctype="multipart/form-data"` without it, the uploaded file will ALWAYS be null. This is a browser rule.
+
+2. in the controller, if its **Servlet** have
+
+```
+    @MultipartConfig 
+       public class MainController extends HttpServlet {
+```       
+
+- if its **SpringBoot**, have 
+        
+        ` @PostMapping("/save")
+        public String save( @RequestParam("file") MultipartFile file) {
+            // file.getOriginalFilename(), file.getBytes(), etc.
+            } `
+
+

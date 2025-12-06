@@ -43,6 +43,7 @@
 									>
 								<div class="invalid-feedback">Please enter the member code</div>
 							</div>
+							
 							<div class="col-4 mb-3">
 								<label for="nameId" class="font-weight-bold">Name</label> <input
 									type="text" name="nameId" id="nameId" class="form-control" 
@@ -56,6 +57,7 @@
 									>
 								<div class="invalid-feedback">Please enter a valid email.</div>
 							</div>
+							
 							<div class="col-3 mb-3">
 								<label for="photoId" class="font-weight-bold">Upload Photo</label> <input
 									type="file" name="photoId" id="photoId" class="form-control"
