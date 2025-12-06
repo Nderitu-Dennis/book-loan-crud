@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>        
+    </welcome-file-list>
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <page-encoding>ISO-8859-1</page-encoding>
+            <scripting-invalid>false</scripting-invalid>
+            <default-content-type>text/html;charset=ISO-8859-1</default-content-type>
+            <error-on-undeclared-namespace>true</error-on-undeclared-namespace>
+        </jsp-property-group>
+    </jsp-config>
+    <servlet>
+		<servlet-name>fc</servlet-name>
+		<servlet-class>tech.csm.controller.MainController</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>fc</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+</web-app>
