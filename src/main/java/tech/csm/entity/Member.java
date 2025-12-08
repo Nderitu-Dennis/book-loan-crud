@@ -18,6 +18,7 @@ public class Member implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="memeber_id")
 	private Long id;
 	
 	@Column(name = "member_code")
