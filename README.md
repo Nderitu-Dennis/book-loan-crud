@@ -15,7 +15,7 @@ enctype="multipart/form-data"
 
 ## steps
 1. Have the HTML form - `enctype="multipart/form-data"` without it, the uploaded file will ALWAYS be null. This is a browser rule.
-```
+```html
 <form id="serviceRequestForm" action="/vsreqs/requests/save"
 					method="post" enctype="multipart/form-data">
 ```                    
@@ -39,6 +39,8 @@ enctype="multipart/form-data"
 
 4. Check if file is present, then u can upload it and also can run some validations eg, checking file type.
 ```java
+@PostMapping("/save")
+
 public String saveRequest(@Valid @ModelAttribute ServiceRequest request,
 			BindingResult rs,
 			@RequestParam("file") MultipartFile file,
@@ -114,9 +116,9 @@ public String saveRequest(@Valid @ModelAttribute ServiceRequest request,
 	    }
 	}
 ```    
-- This endpoint will link to your view download link.
+- This endpoint will link to your view download link. In this case its a JSP.
 ```html
-						<td><a href="/vsreqs/requests/download?attachmentPath=${a.attachmentPath}">${a.attachmentPath} </a></td>
+<td><a href="/vsreqs/requests/download?attachmentPath=${a.attachmentPath}">${a.attachmentPath} </a></td>
 ```
                    
 6. Also prior to this, u will have set up a `FileUtil` class that links to/ creates a directory where the upload files will be stored.
@@ -168,7 +170,7 @@ public class FileUtil {
 }
 ```
 
-Define the directory path in **application.properties**  and obtain it in this class via the `@Value` annotation from `Lombok` _(check FileUtil code)._ Also u can also define attrubutes like max upload size here in `application.properties`.
+Define the directory path in **application.properties**  and obtain it in this class via the `@Value` annotation from `Lombok` _(check FileUtil code)._ Also u can also define attributes like max upload size here in `application.properties`.
 ```
 #Application properties
 upload.dir=C:/uploads/vehicles/
@@ -181,12 +183,12 @@ spring.servlet.multipart.max-request-size=10MB
 7. Also, u can add client side validations like accepted file types extensions like:
 ```HTML
 <label for="file" class="font-weight-bold">Upload any vehicle file</label>
-								 <input type="file" name="file" id="file"
+			<input type="file" name="file" id="file"
 								class="form-control"
 								accept=".png,.jpg,.jpeg,.pdf">
-								<small class="form-text text-muted">Max 10MB. PNG, JPG, JPEG, PDF only</small>
+			<small class="form-text text-muted">Max 10MB. PNG, JPG, JPEG, PDF only</small>
 ```
-*pay attention to name & id, thats how it should be named*, **file** that is, if you want to avoid problems in the controller.
+*pay attention to name & id, thats how it should be named*; **file**, that is, if you want to avoid problems in the controller.
 
 - Yea, thats it. `application.properties`-> `FileUtil`-> `Controller`-> `View(form and display page)`. U can put the saving logic in the **Service layer** but for now lets KISS.
 
